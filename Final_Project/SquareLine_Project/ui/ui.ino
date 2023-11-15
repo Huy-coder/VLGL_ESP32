@@ -58,6 +58,8 @@ static BLEAdvertisedDevice* myDevice;
 
 unsigned long previous_connect = 0;
 bool logic_command = 0;
+
+extern int directionButton;
 #if LV_USE_LOG != 0
 /* Serial debugging */
 void my_print(const char * buf)
@@ -279,14 +281,15 @@ void BLE_Task( void * parameter )
     }
 
     if (connected) {
-      if (millis() - previous_connect > 1000)
-      {
-        logic_command =! logic_command;
-        String newValue = (logic_command == 1) ? "Y" : "N";
-        Serial.printf("Setting new characteristic value to \"%s\"\n", newValue);
-        pRemoteCharacteristic->writeValue(newValue.c_str(), newValue.length());
+//      if (millis() - previous_connect > 1000)
+//      {
+//        logic_command =! logic_command;
+//        String newValue = (logic_command == 1) ? "Y" : "N";
+        String value = String(directionButton);
+        Serial.printf("Setting new characteristic value to \"%s\"\n", value);
+        pRemoteCharacteristic->writeValue(value.c_str(), value.length());
         previous_connect = millis();
-      }
+//      }
     } else if (doScan) {
       BLEDevice::getScan()->start(0);  // this is just example to start scan after disconnect, most likely there is better way to do it in arduino
     }

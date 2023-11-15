@@ -5,26 +5,28 @@
 
 #include "ui.h"
 
+int directionButton = 0;
 void moveForward(lv_event_t * e)
 {
 	// Your code here
-  //Serial.println("Move forward");
+  directionButton = 1;
 }
 
 void moveLeft(lv_event_t * e)
 {
 	// Your code here
  //Serial.println("Move left");
+  directionButton = 2;
 }
 
 void moveRight(lv_event_t * e)
 {
 	// Your code here
- //Serial.println("Move right");
+  directionButton = 3;
 }
 
 void moveBackward(lv_event_t * e)
 {
 	// Your code here
- //Serial.println("Move backward");
+  directionButton = 4;
 }
