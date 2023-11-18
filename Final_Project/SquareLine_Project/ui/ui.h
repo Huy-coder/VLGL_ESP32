@@ -28,38 +28,13 @@ extern lv_obj_t *ui_Button3;
 // SCREEN: ui_Screen2
 void ui_Screen2_screen_init(void);
 extern lv_obj_t *ui_Screen2;
-void ui_event_Button5( lv_event_t * e);
-extern lv_obj_t *ui_Button5;
-void ui_event_Checkbox1( lv_event_t * e);
-extern lv_obj_t *ui_Checkbox1;
-void ui_event_Slider1( lv_event_t * e);
-extern lv_obj_t *ui_Slider1;
-void ui_event_Slider2( lv_event_t * e);
-extern lv_obj_t *ui_Slider2;
-void ui_event_Slider3( lv_event_t * e);
-extern lv_obj_t *ui_Slider3;
-void ui_event_Slider4( lv_event_t * e);
-extern lv_obj_t *ui_Slider4;
-extern lv_obj_t *ui_Label6;
-extern lv_obj_t *ui_Label7;
-extern lv_obj_t *ui_Label8;
-extern lv_obj_t *ui_Label9;
-void ui_event_Switch1( lv_event_t * e);
-extern lv_obj_t *ui_Switch1;
-void ui_event_Switch2( lv_event_t * e);
-extern lv_obj_t *ui_Switch2;
-void ui_event_Switch3( lv_event_t * e);
-extern lv_obj_t *ui_Switch3;
-void ui_event_Switch4( lv_event_t * e);
-extern lv_obj_t *ui_Switch4;
-extern lv_obj_t *ui_Button9;
-extern lv_obj_t *ui_Button10;
-extern lv_obj_t *ui_Button11;
-extern lv_obj_t *ui_Button12;
-extern lv_obj_t *ui_Label12;
-extern lv_obj_t *ui_Label13;
-extern lv_obj_t *ui_Label14;
-extern lv_obj_t *ui_Label15;
+void ui_event_Button4( lv_event_t * e);
+extern lv_obj_t *ui_Button4;
+extern lv_obj_t *ui_Image2;
+extern lv_obj_t *ui_Image3;
+extern lv_obj_t *ui_Image4;
+extern lv_obj_t *ui_Image5;
+extern lv_obj_t *ui_Image6;
 // SCREEN: ui_Screen3
 void ui_Screen3_screen_init(void);
 extern lv_obj_t *ui_Screen3;
@@ -84,6 +59,8 @@ extern lv_obj_t *ui_Button8;
 extern lv_obj_t *ui_Label1;
 extern lv_obj_t *ui____initial_actions0;
 
+LV_IMG_DECLARE( ui_img_1016388178);   // assets\icons8-race-car-48.png
+LV_IMG_DECLARE( ui_img_2016198774);   // assets\icons8-finger-up-50.png
 LV_IMG_DECLARE( ui_img_472371_png);   // assets\472371.png
 LV_IMG_DECLARE( ui_img_568182_png);   // assets\568182.png
 

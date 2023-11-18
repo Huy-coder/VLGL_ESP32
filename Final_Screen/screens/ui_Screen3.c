@@ -24,9 +24,11 @@ lv_obj_set_style_bg_opa(ui_Button6, 255, LV_PART_MAIN| LV_STATE_DEFAULT);
 ui_Arc2 = lv_arc_create(ui_Screen3);
 lv_obj_set_width( ui_Arc2, 150);
 lv_obj_set_height( ui_Arc2, 150);
-lv_obj_set_x( ui_Arc2, -123 );
-lv_obj_set_y( ui_Arc2, -6 );
+lv_obj_set_x( ui_Arc2, -118 );
+lv_obj_set_y( ui_Arc2, -3 );
 lv_obj_set_align( ui_Arc2, LV_ALIGN_CENTER );
+lv_obj_clear_flag( ui_Arc2, LV_OBJ_FLAG_SCROLLABLE | LV_OBJ_FLAG_SCROLL_ELASTIC | LV_OBJ_FLAG_SCROLL_MOMENTUM | LV_OBJ_FLAG_SCROLL_CHAIN );    /// Flags
+lv_obj_set_scrollbar_mode(ui_Arc2, LV_SCROLLBAR_MODE_OFF);
 
 
 ui_Button13 = lv_btn_create(ui_Screen3);

@@ -60,6 +60,7 @@ unsigned long previous_connect = 0;
 bool logic_command = 0;
 
 extern int directionButton;
+extern int flag;
 #if LV_USE_LOG != 0
 /* Serial debugging */
 void my_print(const char * buf)
@@ -156,6 +157,7 @@ bool connectToServer() {
   if (pRemoteCharacteristic->canRead()) {
     std::string value = pRemoteCharacteristic->readValue();
     Serial.printf("The characteristic value was: %s\n", value.c_str());
+    
   }
 
   if (pRemoteCharacteristic->canNotify())
@@ -287,7 +289,13 @@ void BLE_Task( void * parameter )
 //        String newValue = (logic_command == 1) ? "Y" : "N";
         String value = String(directionButton);
         Serial.printf("Setting new characteristic value to \"%s\"\n", value);
-        pRemoteCharacteristic->writeValue(value.c_str(), value.length());
+        if(flag == 1) {
+          pRemoteCharacteristic->writeValue(value.c_str(), value.length());
+          flag = 0;
+        }
+        std::string valueReceived = pRemoteCharacteristic->readValue();
+        int valueInt = std::stoi(valueReceived);
+        checkCondition(valueInt);
         previous_connect = millis();
 //      }
     } else if (doScan) {
@@ -308,6 +316,35 @@ void LVGL_Task( void * parameter )
     /*END TASK 2*/
   }
 }
+
+void checkCondition(int value)
+{
+  switch(value) {
+    case 1:
+      _ui_flag_modify( ui_Image3, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      delay(1000);
+      _ui_flag_modify( ui_Image3, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      break;
+    case 2:
+      _ui_flag_modify( ui_Image4, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      delay(1000);
+      _ui_flag_modify( ui_Image4, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      break;
+    case 3:
+      _ui_flag_modify( ui_Image5, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      delay(1000);
+      _ui_flag_modify( ui_Image5, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      break;
+    case 4:
+      _ui_flag_modify( ui_Image6, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      delay(1000);
+      _ui_flag_modify( ui_Image6, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      break;
+    default:
+      break;
+  }
+}
+
 void loop()
 {
   //NOT USE
