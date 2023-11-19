@@ -10,23 +10,23 @@ void ui_Screen5_screen_init(void)
 ui_Screen5 = lv_obj_create(NULL);
 lv_obj_clear_flag( ui_Screen5, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 
-ui_Button8 = lv_btn_create(ui_Screen5);
-lv_obj_set_width( ui_Button8, 55);
-lv_obj_set_height( ui_Button8, 35);
-lv_obj_set_x( ui_Button8, 210 );
-lv_obj_set_y( ui_Button8, 115 );
-lv_obj_set_align( ui_Button8, LV_ALIGN_CENTER );
-lv_obj_add_flag( ui_Button8, LV_OBJ_FLAG_SCROLL_ON_FOCUS );   /// Flags
-lv_obj_clear_flag( ui_Button8, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
-lv_obj_set_style_bg_color(ui_Button8, lv_color_hex(0x0D00FC), LV_PART_MAIN | LV_STATE_DEFAULT );
-lv_obj_set_style_bg_opa(ui_Button8, 255, LV_PART_MAIN| LV_STATE_DEFAULT);
+ui_ButtonBack2 = lv_btn_create(ui_Screen5);
+lv_obj_set_width( ui_ButtonBack2, 55);
+lv_obj_set_height( ui_ButtonBack2, 35);
+lv_obj_set_x( ui_ButtonBack2, 210 );
+lv_obj_set_y( ui_ButtonBack2, 115 );
+lv_obj_set_align( ui_ButtonBack2, LV_ALIGN_CENTER );
+lv_obj_add_flag( ui_ButtonBack2, LV_OBJ_FLAG_SCROLL_ON_FOCUS );   /// Flags
+lv_obj_clear_flag( ui_ButtonBack2, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
+lv_obj_set_style_bg_color(ui_ButtonBack2, lv_color_hex(0x0D00FC), LV_PART_MAIN | LV_STATE_DEFAULT );
+lv_obj_set_style_bg_opa(ui_ButtonBack2, 255, LV_PART_MAIN| LV_STATE_DEFAULT);
 
-ui_Label1 = lv_label_create(ui_Screen5);
-lv_obj_set_width( ui_Label1, LV_SIZE_CONTENT);  /// 1
-lv_obj_set_height( ui_Label1, LV_SIZE_CONTENT);   /// 1
-lv_obj_set_align( ui_Label1, LV_ALIGN_CENTER );
-lv_label_set_text(ui_Label1,"Credit: Tran Ngo Phuong Huy\nClass: 19DHDT02\nStudent ID: 1953020047\nVersion: 1.0 Beta\nDevice: ESP32-S3-WROOM-1U");
+ui_Credit = lv_label_create(ui_Screen5);
+lv_obj_set_width( ui_Credit, LV_SIZE_CONTENT);  /// 1
+lv_obj_set_height( ui_Credit, LV_SIZE_CONTENT);   /// 1
+lv_obj_set_align( ui_Credit, LV_ALIGN_CENTER );
+lv_label_set_text(ui_Credit,"Credit: Tran Ngo Phuong Huy\nClass: 19DHDT02\nStudent ID: 1953020047\nVersion: 1.0 Beta\nDevice: ESP32-S3-WROOM-1U");
 
-lv_obj_add_event_cb(ui_Button8, ui_event_Button8, LV_EVENT_ALL, NULL);
+lv_obj_add_event_cb(ui_ButtonBack2, ui_event_ButtonBack2, LV_EVENT_ALL, NULL);
 
 }

@@ -60,6 +60,8 @@ unsigned long previous_connect = 0;
 bool logic_command = 0;
 
 extern int directionButton;
+extern int flag;
+int valueInt;
 #if LV_USE_LOG != 0
 /* Serial debugging */
 void my_print(const char * buf)
@@ -193,6 +195,9 @@ static void notifyCallback(
   bool isNotify) {
   static const char* TAG = "notifyCallback";
   Serial.printf("Notify callback for characteristic %s of data length %d data: %s\n", pBLERemoteCharacteristic->getUUID().toString(), length, pData);
+  String myString = (String) static_cast<unsigned>(pData[0]);
+  Serial.printf("Hello %s\n",myString);
+  valueInt = myString.toInt();
 }
 
 void setup()
@@ -271,25 +276,29 @@ void BLE_Task( void * parameter )
   Serial.println(xPortGetCoreID());
   /*BEGIN TASK 1*/
   while (1) {
+    if (doConnect == false && connected == false)
+    {
+      doConnect == true;
+    }
     if (doConnect == true) {
       if (connectToServer()) {
         Serial.printf("Connected to the BLE Server.\n");
       } else {
+
         Serial.printf("Failed connect to the server; nothin more will do.\n");
       }
       doConnect = false;
     }
 
     if (connected) {
-//      if (millis() - previous_connect > 1000)
-//      {
-//        logic_command =! logic_command;
-//        String newValue = (logic_command == 1) ? "Y" : "N";
-        String value = String(directionButton);
+      String value = String(directionButton);
+      if (flag == 1) {
+        Serial.printf("flag = %d\n", flag);
         Serial.printf("Setting new characteristic value to \"%s\"\n", value);
         pRemoteCharacteristic->writeValue(value.c_str(), value.length());
-        previous_connect = millis();
-//      }
+        flag = 0;
+      }
+      checkCondition(valueInt);
     } else if (doScan) {
       BLEDevice::getScan()->start(0);  // this is just example to start scan after disconnect, most likely there is better way to do it in arduino
     }
@@ -297,6 +306,7 @@ void BLE_Task( void * parameter )
     vTaskDelay(20 / portTICK_PERIOD_MS);
   }
 }
+
 void LVGL_Task( void * parameter )
 {
   Serial.print("LVGL_Task is running on core ");
@@ -308,6 +318,40 @@ void LVGL_Task( void * parameter )
     /*END TASK 2*/
   }
 }
+
+void checkCondition(int value)
+{
+  switch (value) {
+    case 49:
+      Serial.println("Case 1");
+      _ui_flag_modify( ui_Finger1, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      delay(1000);
+      _ui_flag_modify( ui_Finger1, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      break;
+    case 50:
+      Serial.println("Case 2");
+      _ui_flag_modify( ui_Finger2, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      delay(1000);
+      _ui_flag_modify( ui_Finger2, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      break;
+    case 51:
+      Serial.println("Case 3");
+      _ui_flag_modify( ui_Finger3, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      delay(1000);
+      _ui_flag_modify( ui_Finger3, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      break;
+    case 52:
+      Serial.println("Case 4");
+      _ui_flag_modify( ui_Finger4, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      delay(1000);
+      _ui_flag_modify( ui_Finger4, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      break;
+    default:
+      break;
+  }
+  valueInt = -1;
+}
+
 void loop()
 {
   //NOT USE
