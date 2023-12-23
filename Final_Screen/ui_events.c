@@ -24,3 +24,8 @@ void moveBackward(lv_event_t * e)
 {
 	// Your code here
 }
+
+void stopMotor(lv_event_t * e)
+{
+	// Your code here
+}

@@ -14,6 +14,7 @@ void moveForward(lv_event_t * e);
 void moveLeft(lv_event_t * e);
 void moveRight(lv_event_t * e);
 void moveBackward(lv_event_t * e);
+void stopMotor(lv_event_t * e);
 
 #ifdef __cplusplus
 } /*extern "C"*/

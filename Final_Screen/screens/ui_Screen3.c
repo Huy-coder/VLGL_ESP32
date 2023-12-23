@@ -80,10 +80,22 @@ lv_obj_add_flag( ui_Speedometer, LV_OBJ_FLAG_ADV_HITTEST );   /// Flags
 lv_obj_clear_flag( ui_Speedometer, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 lv_img_set_zoom(ui_Speedometer,400);
 
+ui_StopButton = lv_btn_create(ui_Screen3);
+lv_obj_set_width( ui_StopButton, 50);
+lv_obj_set_height( ui_StopButton, 50);
+lv_obj_set_x( ui_StopButton, 90 );
+lv_obj_set_y( ui_StopButton, -10 );
+lv_obj_set_align( ui_StopButton, LV_ALIGN_CENTER );
+lv_obj_add_flag( ui_StopButton, LV_OBJ_FLAG_SCROLL_ON_FOCUS );   /// Flags
+lv_obj_clear_flag( ui_StopButton, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
+lv_obj_set_style_bg_color(ui_StopButton, lv_color_hex(0xFE0303), LV_PART_MAIN | LV_STATE_DEFAULT );
+lv_obj_set_style_bg_opa(ui_StopButton, 255, LV_PART_MAIN| LV_STATE_DEFAULT);
+
 lv_obj_add_event_cb(ui_ButtonBack1, ui_event_ButtonBack1, LV_EVENT_ALL, NULL);
 lv_obj_add_event_cb(ui_ForwardButton, ui_event_ForwardButton, LV_EVENT_ALL, NULL);
 lv_obj_add_event_cb(ui_LeftButton, ui_event_LeftButton, LV_EVENT_ALL, NULL);
 lv_obj_add_event_cb(ui_RightButton, ui_event_RightButton, LV_EVENT_ALL, NULL);
 lv_obj_add_event_cb(ui_BackwardButton, ui_event_BackwardButton, LV_EVENT_ALL, NULL);
+lv_obj_add_event_cb(ui_StopButton, ui_event_StopButton, LV_EVENT_ALL, NULL);
 
 }

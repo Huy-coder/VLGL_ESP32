@@ -197,6 +197,9 @@ static void notifyCallback(
   Serial.printf("Notify callback for characteristic %s of data length %d data: %s\n", pBLERemoteCharacteristic->getUUID().toString(), length, pData);
   String myString = (String) static_cast<unsigned>(pData[0]);
   Serial.printf("Hello %s\n",myString);
+  String myString1 = (String) static_cast<unsigned>(pData[1]);
+  String myString2 = (String) static_cast<unsigned>(pData[2]);
+  Serial.printf("Hi %s and %s", myString1, myString2);
   valueInt = myString.toInt();
 }
 
@@ -321,6 +324,7 @@ void LVGL_Task( void * parameter )
 
 void checkCondition(int value)
 {
+  
   switch (value) {
     case 49:
       Serial.println("Case 1");

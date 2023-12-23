@@ -12,6 +12,7 @@ void moveForward(lv_event_t * e)
 	// Your code here
 	directionButton = 1;
   flag = 1;
+  lv_label_set_text(ui_Velocity,"3m/s");
 }
 
 void moveLeft(lv_event_t * e)
@@ -19,6 +20,7 @@ void moveLeft(lv_event_t * e)
 	// Your code here
 	directionButton = 4;
   flag = 1;
+  lv_label_set_text(ui_Velocity,"2m/s");
 }
 
 void moveRight(lv_event_t * e)
@@ -26,6 +28,7 @@ void moveRight(lv_event_t * e)
 	// Your code here
 	directionButton = 2;
   flag = 1;
+  lv_label_set_text(ui_Velocity,"2m/s");
 }
 
 void moveBackward(lv_event_t * e)
@@ -33,4 +36,13 @@ void moveBackward(lv_event_t * e)
 	// Your code here
 	directionButton = 3;
   flag = 1;
+  lv_label_set_text(ui_Velocity,"3m/s");
+}
+
+void stopMotor(lv_event_t * e)
+{
+	// Your code here
+	directionButton = 0;
+  	flag = 1;
+   lv_label_set_text(ui_Velocity,"0m/s");
 }

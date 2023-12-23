@@ -50,6 +50,8 @@ void ui_event_BackwardButton( lv_event_t * e);
 extern lv_obj_t *ui_BackwardButton;
 extern lv_obj_t *ui_Velocity;
 extern lv_obj_t *ui_Speedometer;
+void ui_event_StopButton( lv_event_t * e);
+extern lv_obj_t *ui_StopButton;
 // SCREEN: ui_Screen5
 void ui_Screen5_screen_init(void);
 extern lv_obj_t *ui_Screen5;

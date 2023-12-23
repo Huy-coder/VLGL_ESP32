@@ -49,6 +49,8 @@ void ui_event_BackwardButton( lv_event_t * e);
 lv_obj_t *ui_BackwardButton;
 lv_obj_t *ui_Velocity;
 lv_obj_t *ui_Speedometer;
+void ui_event_StopButton( lv_event_t * e);
+lv_obj_t *ui_StopButton;
 
 
 // SCREEN: ui_Screen5
@@ -58,13 +60,13 @@ void ui_event_ButtonBack2( lv_event_t * e);
 lv_obj_t *ui_ButtonBack2;
 lv_obj_t *ui_Credit;
 lv_obj_t *ui____initial_actions0;
-const lv_img_dsc_t *ui_imgset_598973145[1] = {&ui_img_2016198774};
-const lv_img_dsc_t *ui_imgset_37493096[1] = {&ui_img_1016388178};
-const lv_img_dsc_t *ui_imgset_1742190239[1] = {&ui_img_483416384};
 const lv_img_dsc_t *ui_imgset_1181843090[1] = {&ui_img_798946583};
+const lv_img_dsc_t *ui_imgset_598973145[1] = {&ui_img_2016198774};
 const lv_img_dsc_t *ui_imgset_353751797[1] = {&ui_img_325661808};
+const lv_img_dsc_t *ui_imgset_37493096[1] = {&ui_img_1016388178};
 const lv_img_dsc_t *ui_imgset_1197924266[1] = {&ui_img_1134473259};
 const lv_img_dsc_t *ui_imgset_444053641[1] = {&ui_img_582018047};
+const lv_img_dsc_t *ui_imgset_1742190239[1] = {&ui_img_483416384};
 
 ///////////////////// TEST LVGL SETTINGS ////////////////////
 #if LV_COLOR_DEPTH != 16
@@ -126,7 +128,7 @@ if ( event_code == LV_EVENT_PRESSED) {
 }
 void ui_event_LeftButton( lv_event_t * e) {
     lv_event_code_t event_code = lv_event_get_code(e);lv_obj_t * target = lv_event_get_target(e);
-if ( event_code == LV_EVENT_CLICKED) {
+if ( event_code == LV_EVENT_PRESSED) {
       moveLeft( e );
 }
 }
@@ -140,6 +142,12 @@ void ui_event_BackwardButton( lv_event_t * e) {
     lv_event_code_t event_code = lv_event_get_code(e);lv_obj_t * target = lv_event_get_target(e);
 if ( event_code == LV_EVENT_PRESSED) {
       moveBackward( e );
+}
+}
+void ui_event_StopButton( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);lv_obj_t * target = lv_event_get_target(e);
+if ( event_code == LV_EVENT_PRESSED) {
+      stopMotor( e );
 }
 }
 void ui_event_ButtonBack2( lv_event_t * e) {
